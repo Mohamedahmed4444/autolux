@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AutoLux — Premium Car Showroom</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-logo">AUTO<span>LUX</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="cars.html">Cars</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="cars.html" class="nav-cta">Browse Cars</a>
+  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"><div class="hero-grid"></div></div>
+  <div class="hero-content">
+    <p class="hero-tag">Egypt's Premier Car Showroom</p>
+    <h1 class="hero-title">DRIVE YOUR<br><span>DREAM</span></h1>
+    <p class="hero-sub">Discover an exclusive collection of luxury, sport, and family vehicles — all under one roof.</p>
+    <div class="hero-btns">
+      <a href="cars.html" class="btn-primary">Explore Collection</a>
+      <a href="contact.html" class="btn-ghost">Book a Test Drive</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Cars Available</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Top Brands</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num">5★</span><span class="stat-label">Customer Rating</span></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>BMW</span><span>•</span><span>Mercedes-Benz</span><span>•</span>
+    <span>Porsche</span><span>•</span><span>Toyota</span><span>•</span>
+    <span>Audi</span><span>•</span><span>Lamborghini</span><span>•</span>
+    <span>Ford</span><span>•</span><span>Hyundai</span><span>•</span>
+    <span>BMW</span><span>•</span><span>Mercedes-Benz</span><span>•</span>
+    <span>Porsche</span><span>•</span><span>Toyota</span><span>•</span>
+    <span>Audi</span><span>•</span><span>Lamborghini</span><span>•</span>
+    <span>Ford</span><span>•</span><span>Hyundai</span><span>•</span>
+  </div>
+</div>
+
+<!-- FEATURED CARS -->
+<section class="section" id="featured">
+  <div class="section-header">
+    <p class="section-tag">Hand-Picked Selection</p>
+    <h2>Featured Vehicles</h2>
+  </div>
+  <div class="cars-grid" id="featuredGrid">
+    <div class="loading-spinner">Loading cars from database...</div>
+  </div>
+  <div class="section-footer">
+    <a href="cars.html" class="btn-primary">View All Cars</a>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section">
+  <div class="why-text">
+    <p class="section-tag">Why AutoLux</p>
+    <h2>The Showroom<br>Experience<br><em>Redefined</em></h2>
+    <p>We combine world-class inventory with transparent pricing, expert consultation, and seamless financing options to make your car-buying journey unforgettable.</p>
+    <a href="about.html" class="btn-ghost">Our Story →</a>
+  </div>
+  <div class="why-cards">
+    <div class="why-card"><div class="why-icon">🏆</div><h3>Certified Quality</h3><p>Every vehicle passes a 200-point inspection before it hits our floor.</p></div>
+    <div class="why-card accent"><div class="why-icon">💳</div><h3>Flexible Financing</h3><p>Tailored payment plans with competitive rates from top Egyptian banks.</p></div>
+    <div class="why-card"><div class="why-icon">🔧</div><h3>After-Sale Service</h3><p>Dedicated service center and 1-year maintenance package included.</p></div>
+    <div class="why-card accent"><div class="why-icon">🚗</div><h3>Test Drive Anytime</h3><p>Book a test drive online — we come to you or you visit us.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials-section">
+  <div class="section-header">
+    <p class="section-tag">Happy Clients</p>
+    <h2>What They Say</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"Found my dream BMW in perfect condition. The team was incredibly helpful and made the whole process smooth."</p>
+      <div class="t-author"><div class="t-avatar">AH</div><div><strong>Ahmed Hassan</strong><span>Cairo, Egypt</span></div></div>
+    </div>
+    <div class="testimonial-card featured-t">
+      <div class="stars">★★★★★</div>
+      <p>"AutoLux has an unmatched selection. I visited three showrooms before coming here and instantly knew this was the place. Bought my Mercedes the same day!"</p>
+      <div class="t-author"><div class="t-avatar">SM</div><div><strong>Sara Mohamed</strong><span>Alexandria, Egypt</span></div></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"Great financing options and zero pressure sales. The after-sale support is exceptional. Highly recommend AutoLux!"</p>
+      <div class="t-author"><div class="t-avatar">KA</div><div><strong>Karim Ali</strong><span>Giza, Egypt</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="cta-content">
+    <h2>Ready to Find<br>Your Perfect Car?</h2>
+    <p>Browse our full inventory online or visit our showroom in Heliopolis, Cairo.</p>
+    <div class="hero-btns">
+      <a href="cars.html" class="btn-primary">Browse Inventory</a>
+      <a href="contact.html" class="btn-ghost-dark">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">AUTO<span>LUX</span></div>
+      <p>Egypt's most trusted premium car showroom. Quality, transparency, and passion for automobiles since 2010.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="cars.html">Cars</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-links">
+      <h4>Categories</h4>
+      <a href="cars.html">Luxury Cars</a>
+      <a href="cars.html">Sport Cars</a>
+      <a href="cars.html">SUVs</a>
+      <a href="cars.html">Sedans</a>
+    </div>
+    <div class="footer-contact">
+      <h4>Find Us</h4>
+      <p>📍 15 El-Nozha St, Heliopolis, Cairo</p>
+      <p>📞 +20 100 123 4567</p>  
+      <p>✉️ info@autolux.eg</p>
+      <p>🕐 Sat–Thu: 10am – 9pm</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 AutoLux Car Showroom. All rights reserved.</p>
+    <p>Built with ❤️ for the Web Development Course</p>
+  </div>
+</footer>
+
+<!-- CAR DETAIL MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal" id="carModal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+<script>
+  // Load featured cars from API
+  (async () => {
+    const cars = await fetchCars();
+    const grid = document.getElementById('featuredGrid');
+    const featured = cars.slice(0, 3);
+    grid.innerHTML = featured.map(car => createCarCard(car)).join('');
+  })();
+</script>
+</body>
+</html>

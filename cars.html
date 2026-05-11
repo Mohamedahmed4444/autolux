@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cars — AutoLux</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-logo">AUTO<span>LUX</span></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="cars.html" class="active">Cars</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Book Test Drive</a>
+  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-content">
+    <p class="section-tag">Our Inventory</p>
+    <h1>Find Your<br><span>Perfect Car</span></h1>
+    <p>Browse our curated selection of luxury, sport, and family vehicles.</p>
+  </div>
+</section>
+
+<!-- SEARCH & FILTER -->
+<section class="filter-section">
+  <div class="filter-bar">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search by brand or model..." oninput="filterCars()"/>
+    </div>
+    <div class="filters">
+      <select id="brandFilter" onchange="filterCars()">
+        <option value="">All Brands</option>
+        <option value="BMW">BMW</option>
+        <option value="Mercedes">Mercedes-Benz</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Audi">Audi</option>
+        <option value="Porsche">Porsche</option>
+        <option value="Hyundai">Hyundai</option>
+        <option value="Ford">Ford</option>
+      </select>
+      <select id="typeFilter" onchange="filterCars()">
+        <option value="">All Types</option>
+        <option value="Luxury">Luxury</option>
+        <option value="Sport">Sport</option>
+        <option value="SUV">SUV</option>
+        <option value="Sedan">Sedan</option>
+        <option value="Hatchback">Hatchback</option>
+      </select>
+      <select id="priceFilter" onchange="filterCars()">
+        <option value="">Any Price</option>
+        <option value="low">Under $30,000</option>
+        <option value="mid">$30,000 – $70,000</option>
+        <option value="high">Above $70,000</option>
+      </select>
+      <button class="btn-reset" onclick="resetFilters()">Reset</button>
+    </div>
+  </div>
+  <div class="results-count" id="resultsCount">Loading cars...</div>
+</section>
+
+<!-- CARS GRID -->
+<section class="cars-section">
+  <div class="cars-grid" id="carsGrid">
+    <div class="loading-spinner">Loading cars from database...</div>
+  </div>
+  <div class="no-results hidden" id="noResults">
+    <div class="no-results-icon">🚗</div>
+    <h3>No cars found</h3>
+    <p>Try adjusting your filters or search term.</p>
+    <button class="btn-primary" onclick="resetFilters()">Reset Filters</button>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal" id="carModal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">AUTO<span>LUX</span></div>
+      <p>Egypt's most trusted premium car showroom.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="cars.html">Cars</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-contact">
+      <h4>Find Us</h4>
+      <p>📍 15 El-Nozha St, Heliopolis, Cairo</p>
+      <p>📞 +20 100 123 4567</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 AutoLux Car Showroom. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+<script>
+  let allCars = [];
+
+  function renderCars(list) {
+    const grid = document.getElementById('carsGrid');
+    const noRes = document.getElementById('noResults');
+    const count = document.getElementById('resultsCount');
+    if (list.length === 0) {
+      grid.innerHTML = '';
+      noRes.classList.remove('hidden');
+      count.textContent = 'No results found';
+    } else {
+      noRes.classList.add('hidden');
+      grid.innerHTML = list.map(car => createCarCard(car)).join('');
+      count.textContent = `Showing ${list.length} car${list.length !== 1 ? 's' : ''}`;
+    }
+  }
+
+  function filterCars() {
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const brand  = document.getElementById('brandFilter').value;
+    const type   = document.getElementById('typeFilter').value;
+    const price  = document.getElementById('priceFilter').value;
+
+    const filtered = allCars.filter(car => {
+      const matchSearch = !search || car.name.toLowerCase().includes(search) || car.brand.toLowerCase().includes(search);
+      const matchBrand  = !brand  || car.brand === brand;
+      const matchType   = !type   || car.type  === type;
+      const p = Number(car.price);
+      const matchPrice  = !price  ||
+        (price === 'low'  && p < 30000) ||
+        (price === 'mid'  && p >= 30000 && p <= 70000) ||
+        (price === 'high' && p > 70000);
+      return matchSearch && matchBrand && matchType && matchPrice;
+    });
+    renderCars(filtered);
+  }
+
+  function resetFilters() {
+    document.getElementById('searchInput').value = '';
+    document.getElementById('brandFilter').value = '';
+    document.getElementById('typeFilter').value  = '';
+    document.getElementById('priceFilter').value = '';
+    renderCars(allCars);
+  }
+
+  // Load from API on page load
+  (async () => {
+    allCars = await fetchCars();
+    renderCars(allCars);
+  })();
+</script>
+</body>
+</html>
