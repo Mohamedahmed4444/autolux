@@ -15,7 +15,7 @@ async function fetchCars() {
     }
   } catch (err) {
     console.warn('API not reachable, using static data.js');
-    carsLoaded = carsData; // fallback
+    carsLoaded = carsData;
     return carsData;
   }
 }
@@ -25,15 +25,18 @@ function toggleMenu() {
 }
 
 function createCarCard(car) {
-  const carIcons = { Sport:'🏎️', Luxury:'🚘', SUV:'🚙', Sedan:'🚗', Hatchback:'🚗' };
-  const icon = carIcons[car.type] || '🚗';
-  const badge = car.badge || car.badge_class ? `<span class="badge ${car.badge_class || ''}">${car.badge || ''}</span>` : '';
+  const badge = car.badge ? `<span class="badge ${car.badge_class || car.badgeClass || ''}">${car.badge}</span>` : '';
   const hp = car.horsepower || car.hp || 0;
   const price = Number(car.price) || 0;
   return `
     <div class="car-card" onclick="openModal(${car.id})">
       <div class="car-card-img">
-        <div class="car-emoji">${icon}</div>
+        <img 
+          src="${car.image}" 
+          alt="${car.brand} ${car.name}"
+          style="width:100%; height:100%; object-fit:cover; display:block;"
+          onerror="this.onerror=null; this.src='https://placehold.co/800x500/1a1a1a/ffffff?text=${car.brand}';"
+        />
         ${badge}
       </div>
       <div class="car-card-body">
@@ -57,9 +60,7 @@ function openModal(carId) {
   const car = carsLoaded.find(c => c.id == carId);
   if (!car) return;
 
-  const carIcons = { Sport:'🏎️', Luxury:'🚘', SUV:'🚙', Sedan:'🚗', Hatchback:'🚗' };
-  const icon = carIcons[car.type] || '🚗';
-  const badge = car.badge ? `<span class="badge ${car.badge_class || ''}">${car.badge}</span>` : '';
+  const badge = car.badge ? `<span class="badge ${car.badge_class || car.badgeClass || ''}">${car.badge}</span>` : '';
   const hp = car.horsepower || car.hp || 0;
   const price = Number(car.price) || 0;
   const mileageText = (car.mileage == 0 || car.mileage == null) ? 'Brand New' : Number(car.mileage).toLocaleString() + ' km';
@@ -67,7 +68,12 @@ function openModal(carId) {
 
   document.getElementById('modalContent').innerHTML = `
     <div class="modal-hero">
-      <div class="modal-emoji">${icon}</div>
+      <img 
+        src="${car.image}" 
+        alt="${car.brand} ${car.name}"
+        style="width:100%; height:280px; object-fit:cover; border-radius:12px 12px 0 0;"
+        onerror="this.onerror=null; this.src='https://placehold.co/800x500/1a1a1a/ffffff?text=${car.brand}';"
+      />
       <div class="modal-header-info">
         <span class="car-brand">${car.brand} · ${car.year}</span>
         <h2>${car.name}</h2>
