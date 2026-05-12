@@ -21,7 +21,6 @@
   <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"><div class="hero-grid"></div></div>
   <div class="hero-content">
@@ -42,7 +41,6 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
     <span>BMW</span><span>•</span><span>Mercedes-Benz</span><span>•</span>
@@ -56,7 +54,6 @@
   </div>
 </div>
 
-<!-- FEATURED CARS -->
 <section class="section" id="featured">
   <div class="section-header">
     <p class="section-tag">Hand-Picked Selection</p>
@@ -70,7 +67,6 @@
   </div>
 </section>
 
-<!-- WHY US -->
 <section class="why-section">
   <div class="why-text">
     <p class="section-tag">Why AutoLux</p>
@@ -86,7 +82,6 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="section testimonials-section">
   <div class="section-header">
     <p class="section-tag">Happy Clients</p>
@@ -111,7 +106,6 @@
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-banner">
   <div class="cta-content">
     <h2>Ready to Find<br>Your Perfect Car?</h2>
@@ -123,7 +117,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-brand">
@@ -154,11 +147,10 @@
   </div>
   <div class="footer-bottom">
     <p>© 2024 AutoLux Car Showroom. All rights reserved.</p>
-    <p>Built with ❤️ for the Web Development Course</p>
+    
   </div>
 </footer>
 
-<!-- CAR DETAIL MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
   <div class="modal" id="carModal" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -169,7 +161,6 @@
 <script src="data.js"></script>
 <script src="main.js"></script>
 <script>
-  // Load featured cars from API
   (async () => {
     const cars = await fetchCars();
     const grid = document.getElementById('featuredGrid');

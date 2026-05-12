@@ -1,8 +1,3 @@
-// ============================================================
-//  server.js — AutoLux Car Showroom Backend
-//  Node.js + Express + MySQL
-//  Run: node server.js
-// ============================================================
 
 const express = require('express');
 const mysql   = require('mysql2');
@@ -12,18 +7,15 @@ const path    = require('path');
 const app  = express();
 const PORT = 3000;
 
-// ── Middleware ───────────────────────────────────────────────
-app.use(cors()); // Allow frontend to call the API
+app.use(cors()); 
 app.use(express.json());
 
-// Serve all HTML/CSS/JS files from the parent folder
 app.use(express.static(path.join(__dirname)));
 
-// ── MySQL Connection ─────────────────────────────────────────
 const db = mysql.createConnection({
   host:     'localhost',
   user:     'root',
-  password: '',           // ← change if you set a MySQL password
+  password: '',           
   database: 'autolux_db'
 });
 
@@ -35,11 +27,6 @@ db.connect(err => {
   console.log('✅ Connected to MySQL database.');
 });
 
-// ============================================================
-//  CARS ROUTES
-// ============================================================
-
-// GET /api/cars — get all cars with optional filters
 app.get('/api/cars', (req, res) => {
   const { brand, type, min_price, max_price, search } = req.query;
 
@@ -60,7 +47,6 @@ app.get('/api/cars', (req, res) => {
   });
 });
 
-// GET /api/cars/:id — get one car
 app.get('/api/cars/:id', (req, res) => {
   db.query('SELECT * FROM cars WHERE id = ?', [req.params.id], (err, results) => {
     if (err)             return res.status(500).json({ error: err.message });
@@ -69,7 +55,6 @@ app.get('/api/cars/:id', (req, res) => {
   });
 });
 
-// POST /api/cars — add a new car
 app.post('/api/cars', (req, res) => {
   const { brand, name, year, type, price, mileage, engine,
           horsepower, transmission, color, fuel, seats,
@@ -97,7 +82,6 @@ app.post('/api/cars', (req, res) => {
   });
 });
 
-// PUT /api/cars/:id — update a car
 app.put('/api/cars/:id', (req, res) => {
   const { brand, name, year, type, price, mileage, engine,
           horsepower, transmission, color, fuel, seats,
@@ -119,7 +103,6 @@ app.put('/api/cars/:id', (req, res) => {
   });
 });
 
-// DELETE /api/cars/:id — delete a car
 app.delete('/api/cars/:id', (req, res) => {
   db.query('DELETE FROM cars WHERE id = ?', [req.params.id], (err, result) => {
     if (err)                  return res.status(500).json({ error: err.message });
@@ -128,11 +111,7 @@ app.delete('/api/cars/:id', (req, res) => {
   });
 });
 
-// ============================================================
-//  CONTACT / INQUIRIES ROUTES
-// ============================================================
 
-// POST /api/contact — save inquiry to MySQL
 app.post('/api/contact', (req, res) => {
   const { fname, lname, email, phone, subject, car_id, message } = req.body;
 
@@ -155,7 +134,6 @@ app.post('/api/contact', (req, res) => {
   });
 });
 
-// GET /api/inquiries — view all inquiries (admin)
 app.get('/api/inquiries', (req, res) => {
   const sql = `
     SELECT i.*, c.name AS car_name, c.brand AS car_brand
@@ -169,7 +147,6 @@ app.get('/api/inquiries', (req, res) => {
   });
 });
 
-// ── Start ────────────────────────────────────────────────────
 app.listen(PORT, () => {
   console.log(`🚗 AutoLux server running at http://localhost:${PORT}`);
   console.log(`📂 Open the site at: http://localhost:${PORT}/index.html`);

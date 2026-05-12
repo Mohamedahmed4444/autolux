@@ -1,9 +1,3 @@
-// ============================================================
-//  data.js — AutoLux Car Showroom
-//  Shared data used by all pages.
-//  In the real project this data comes from the MySQL database
-//  via a Node.js / Flask API endpoint.
-// ============================================================
 
 const carsData = [
   {
@@ -20,7 +14,7 @@ const carsData = [
     color: "Brooklyn Grey",
     fuel: "Petrol",
     seats: 4,
-    image: "🚗",
+    image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&auto=format&fit=crop",
     badge: "New Arrival",
     badgeClass: "badge-new",
     description: "The BMW M4 Competition is the pinnacle of performance engineering. With a 503hp twin-turbo engine, M xDrive all-wheel-drive, and a refined interior packed with tech, it delivers supercar thrills in a usable everyday package.",
@@ -40,7 +34,7 @@ const carsData = [
     color: "Obsidian Black",
     fuel: "Petrol",
     seats: 5,
-    image: "🚘",
+    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&auto=format&fit=crop",
     badge: "Best Seller",
     badgeClass: "badge-hot",
     description: "The new Mercedes C-Class sets the bar for the luxury sedan segment. Its stunning interior is inspired by the flagship S-Class and packs cutting-edge technology with a smooth, refined drive.",
@@ -60,7 +54,7 @@ const carsData = [
     color: "Carmine Red",
     fuel: "Petrol",
     seats: 5,
-    image: "🚙",
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&auto=format&fit=crop",
     badge: "Low Mileage",
     badgeClass: "badge-low",
     description: "The Porsche Cayenne GTS combines the practicality of a premium SUV with the performance DNA of a true sports car. The twin-turbo V8 launches it to 100km/h in just 4.5 seconds.",
@@ -80,7 +74,7 @@ const carsData = [
     color: "Platinum White Pearl",
     fuel: "Petrol",
     seats: 7,
-    image: "🛻",
+    image: "https://images.unsplash.com/photo-1559416523-140ddc3d238c?w=800&auto=format&fit=crop",
     badge: "7 Seats",
     badgeClass: "badge-new",
     description: "The legendary Toyota Land Cruiser 300 Series — more capable, more refined, and more efficient than ever. Whether navigating Cairo traffic or Egypt's desert terrain, this is the ultimate all-terrain companion.",
@@ -100,11 +94,11 @@ const carsData = [
     color: "Navarra Blue Metallic",
     fuel: "Petrol",
     seats: 5,
-    image: "🚗",
+    image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&auto=format&fit=crop",
     badge: "New Arrival",
     badgeClass: "badge-new",
     description: "The Audi A6 is a masterclass in understated luxury. Its Virtual Cockpit Pro, quattro all-wheel-drive, and refined cabin make every journey feel special — whether a morning commute or a long-distance trip.",
-    features: ["Audi Virtual Cockpit Pro", "Matrix LED Headlights", "Bang & Olufsen 3D Sound", "Quattro AWD", "Adaptive Cruise Assist"]
+    features: ["Audi Virtual Cockpit Pro", "Matrix LED Headlights", "Bang and Olufsen 3D Sound", "Quattro AWD", "Adaptive Cruise Assist"]
   },
   {
     id: 6,
@@ -120,11 +114,11 @@ const carsData = [
     color: "Shimmering Silver",
     fuel: "Petrol",
     seats: 5,
-    image: "🚙",
+    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&auto=format&fit=crop",
     badge: "Great Value",
     badgeClass: "badge-low",
-    description: "The Hyundai Tucson N-Line brings sporty styling and impressive value to the competitive compact SUV segment. With its bold parametric grille, turbo engine, and well-equipped interior, it's the smart choice.",
-    features: ["10.25\" Touchscreen", "Digital Cluster", "Blind-Spot Collision Warning", "Safe Exit Assist", "Wireless Charging"]
+    description: "The Hyundai Tucson N-Line brings sporty styling and impressive value to the competitive compact SUV segment. With its bold grille, turbo engine, and well-equipped interior, it is the smart choice.",
+    features: ["10.25in Touchscreen", "Digital Cluster", "Blind-Spot Collision Warning", "Safe Exit Assist", "Wireless Charging"]
   },
   {
     id: 7,
@@ -140,10 +134,10 @@ const carsData = [
     color: "Grabber Blue",
     fuel: "Petrol",
     seats: 4,
-    image: "🏎️",
-    badge: "Collector's Pick",
+    image: "https://images.unsplash.com/photo-1547744152-14d985cb937f?w=800&auto=format&fit=crop",
+    badge: "Collectors Pick",
     badgeClass: "badge-hot",
-    description: "The Ford Mustang GT — an American icon. The thunderous 5.0L Coyote V8 produces 450hp and delivers a visceral driving experience that no other car in this price range can match. A true muscle car legend.",
+    description: "The Ford Mustang GT — an American icon. The thunderous 5.0L Coyote V8 produces 450hp and delivers a visceral driving experience that no other car in this price range can match.",
     features: ["5.0L Coyote V8", "Brembo Brakes", "MagneRide Suspension", "SYNC 4 Infotainment", "Launch Control"]
   },
   {
@@ -157,13 +151,13 @@ const carsData = [
     engine: "3.0L Inline-6 Mild Hybrid",
     horsepower: 362,
     transmission: "9-Speed Automatic",
-    color: "Designo Diamond White Bright",
+    color: "Diamond White",
     fuel: "Hybrid",
     seats: 5,
-    image: "🚘",
+    image: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=800&auto=format&fit=crop",
     badge: "Hybrid",
     badgeClass: "badge-new",
     description: "The Mercedes GLE 450 AMG-Line offers executive SUV presence with the efficiency of mild-hybrid technology. Its E-Active Body Control suspension delivers a magic-carpet ride while the AMG styling turns heads.",
-    features: ["E-Active Body Control", "MBUX with Augmented Reality", "Burmester® Surround Sound", "Parking Package Pro", "AMG Styling Package"]
+    features: ["E-Active Body Control", "MBUX with Augmented Reality", "Burmester Surround Sound", "Parking Package Pro", "AMG Styling Package"]
   }
 ];

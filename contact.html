@@ -32,7 +32,6 @@
 <section class="contact-section section">
   <div class="contact-grid">
 
-    <!-- INFO -->
     <div class="contact-info">
       <h2>Visit Us</h2>
       <p>Our showroom is open 6 days a week. Walk in or book an appointment and we'll have your shortlist ready.</p>
@@ -63,7 +62,6 @@
       </div>
     </div>
 
-    <!-- FORM -->
     <div class="contact-form-wrap">
       <div class="form-header">
         <h2>Send a Message</h2>
@@ -160,13 +158,11 @@
       carSelect.appendChild(opt);
     });
 
-    // Auto-select car if coming from modal link (?car=ID)
     const params = new URLSearchParams(window.location.search);
     if (params.get('car')) carSelect.value = params.get('car');
     if (params.get('subject')) document.getElementById('subject').value = params.get('subject');
   })();
 
-  // Submit form → save to MySQL via API
   async function submitForm() {
     const fname   = document.getElementById('fname').value.trim();
     const lname   = document.getElementById('lname').value.trim();
@@ -191,7 +187,6 @@
     errDiv.style.display = 'none';
 
     try {
-      // Send to backend → saves in MySQL inquiries table
       const res = await fetch('http://localhost:3000/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

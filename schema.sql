@@ -1,17 +1,9 @@
--- ============================================================
---  schema.sql — AutoLux Car Showroom Database
---  Run this in MySQL Workbench or the MySQL CLI:
---    mysql -u root -p < schema.sql
--- ============================================================
-
--- Create & select the database
 CREATE DATABASE IF NOT EXISTS autolux_db
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
 USE autolux_db;
 
--- ── CARS TABLE ────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS cars (
   id             INT AUTO_INCREMENT PRIMARY KEY,
   brand          VARCHAR(100)   NOT NULL,
@@ -29,12 +21,11 @@ CREATE TABLE IF NOT EXISTS cars (
   badge          VARCHAR(50),
   badge_class    VARCHAR(50),
   description    TEXT,
-  features       JSON,          -- stored as JSON array of strings
+  features       JSON,          
   created_at     TIMESTAMP      DEFAULT CURRENT_TIMESTAMP,
   updated_at     TIMESTAMP      DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- ── INQUIRIES TABLE ───────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS inquiries (
   id         INT AUTO_INCREMENT PRIMARY KEY,
   fname      VARCHAR(100) NOT NULL,
@@ -49,7 +40,6 @@ CREATE TABLE IF NOT EXISTS inquiries (
   FOREIGN KEY (car_id) REFERENCES cars(id) ON DELETE SET NULL
 );
 
--- ── SEED DATA — Sample Cars ───────────────────────────────────
 INSERT INTO cars (brand, name, year, type, price, mileage, engine, horsepower, transmission, color, fuel, seats, badge, badge_class, description, features) VALUES
 
 ('BMW', 'M4 Competition', 2024, 'Sport', 85000.00, 0,
@@ -99,20 +89,3 @@ INSERT INTO cars (brand, name, year, type, price, mileage, engine, horsepower, t
  'Hybrid', 'badge-new',
  'The Mercedes GLE 450 AMG-Line offers executive SUV presence with the efficiency of mild-hybrid technology.',
  '["E-Active Body Control", "MBUX with Augmented Reality", "Burmester Surround Sound", "Parking Package Pro", "AMG Styling Package"]');
-
--- ── Useful Queries for Reference ─────────────────────────────
-
--- View all cars:
--- SELECT * FROM cars;
-
--- Filter by type:
--- SELECT * FROM cars WHERE type = 'SUV';
-
--- Filter by price range:
--- SELECT * FROM cars WHERE price BETWEEN 30000 AND 70000;
-
--- View all inquiries with car info:
--- SELECT i.*, c.name AS car_name FROM inquiries i LEFT JOIN cars c ON i.car_id = c.id;
-
--- Count inquiries by subject:
--- SELECT subject, COUNT(*) AS total FROM inquiries GROUP BY subject;

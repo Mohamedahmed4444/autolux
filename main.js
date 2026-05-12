@@ -1,14 +1,7 @@
-// ============================================================
-//  main.js — AutoLux Car Showroom
-//  Shared JavaScript — connected to Node.js + MySQL backend
-// ============================================================
-
 const API = 'http://localhost:3000/api';
 
-// Global cars array (filled from API or fallback to data.js)
 let carsLoaded = [];
 
-// ── Fetch cars from API ──────────────────────────────────────
 async function fetchCars() {
   try {
     const res = await fetch(`${API}/cars`);
@@ -27,12 +20,10 @@ async function fetchCars() {
   }
 }
 
-// ── Nav mobile toggle ────────────────────────────────────────
 function toggleMenu() {
   document.querySelector('.nav-links').classList.toggle('open');
 }
 
-// ── Car Card Template ────────────────────────────────────────
 function createCarCard(car) {
   const carIcons = { Sport:'🏎️', Luxury:'🚘', SUV:'🚙', Sedan:'🚗', Hatchback:'🚗' };
   const icon = carIcons[car.type] || '🚗';
@@ -62,7 +53,6 @@ function createCarCard(car) {
   `;
 }
 
-// ── Modal ────────────────────────────────────────────────────
 function openModal(carId) {
   const car = carsLoaded.find(c => c.id == carId);
   if (!car) return;
@@ -126,14 +116,12 @@ function closeModal() {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// ── Navbar scroll effect ─────────────────────────────────────
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('.navbar');
   if (!nav) return;
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// ── Animate on scroll ────────────────────────────────────────
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.1 });
